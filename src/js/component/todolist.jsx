@@ -16,6 +16,12 @@ function Applist() {
     setTodos(newTodos);
   };
 
+  function remainingTasks() {
+    const numCompleted = todos.filter(todo => todo.completed).length;
+    const numRemaining = todos.length - numCompleted;
+    return numRemaining;
+  }
+
   return (
     <div className="Applist">
       <h1>Todo List</h1>
@@ -35,8 +41,10 @@ function Applist() {
             <button onClick={() => handleDeleteTodo(index)}>Borrar</button>
           </li>
         ))}
+        <p>{remainingTasks()} Tareas restantes</p>
       </ul>
     </div>
+    
   );
 }
 
